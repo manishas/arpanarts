@@ -1,0 +1,8 @@
+# Old Joomla URLs -> new URLs (used by Netlify and Cloudflare Pages)
+/topevent/events/eventdetail/:id/-/:slug   /topevent/events/:slug   301
+/about/blog/12-gayatri-burning-abs   /about/blog/gayatri-burning-abs   301
+/about/blog/6-brilliant-new-choreographic-works-by-joyce-k-paul   /about/blog/brilliant-new-choreographic-works-by-joyce-k-paul   301
+/about/blog/5-how-yavanika-started   /about/blog/how-yavanika-started   301
+/about/blog/4-my-perspective-on-yavanika-veiled-perspectives   /about/blog/my-perspective-on-yavanika-veiled-perspectives   301
+/about/blog/3-yavanika-engaging-and-inspirational   /about/blog/yavanika-engaging-and-inspirational   301
+/admin   /admin/index.html   200
