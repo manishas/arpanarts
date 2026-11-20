@@ -1,0 +1,42 @@
+{
+  "siteName": "Arpan Arts",
+  "logo": "/uploads/logo.png",
+  "email": "arpan.arts@live.com",
+  "phone": "(425) 435-4027",
+  "address": "24311 NE 80th St, Redmond, WA 98053",
+  "facebook": "https://www.facebook.com/ArpanArts",
+  "youtube": "https://www.youtube.com/user/ArpanPerformingArts",
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Academy", "children": [
+      { "label": "Programs", "href": "/academy/programs" },
+      { "label": "Performing with Arpan", "href": "/academy/performing-with-arpan" },
+      { "label": "Admission Process", "href": "/academy/admission-process-new" },
+      { "label": "Audition", "href": "/academy/audition" },
+      { "label": "Registration", "href": "/academy/registration" }
+    ]},
+    { "label": "Classes", "children": [
+      { "label": "Quarterly Classes", "href": "/classes/quarterly-classes" },
+      { "label": "Private Classes", "href": "/classes/private-classes" },
+      { "label": "Workshops", "href": "/classes/workshops" },
+      { "label": "Syllabus", "href": "/classes/syllabus" },
+      { "label": "Schedule", "href": "/classes/schedule" }
+    ]},
+    { "label": "Events", "children": [
+      { "label": "All", "href": "/topevent/events" },
+      { "label": "Arangetram", "href": "/topevent/arpan-arangetram" }
+    ]},
+    { "label": "Gallery", "children": [
+      { "label": "Photos", "href": "/gallery/photos" },
+      { "label": "Videos", "href": "/gallery/videos" }
+    ]},
+    { "label": "About", "children": [
+      { "label": "Overview", "href": "/about/overview" },
+      { "label": "Blog", "href": "/about/blog" },
+      { "label": "Contact", "href": "/about/contact" },
+      { "label": "FAQ", "href": "/about/faq" },
+      { "label": "Privacy Policy", "href": "/about/privacy" }
+    ]}
+  ],
+  "footerText": "Arpan. All Rights Reserved."
+}

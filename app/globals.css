@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-maroon: #86281e;
+  --color-maroon-dark: #670b0b;
+  --color-ochre: #b9770a;
+  --color-olive: #676f33;
+  --color-gold: #e1ac21;
+  --color-gold-dark: #b39300;
+  --color-cream: #fff8dc;
+  --color-ink: #333333;
+  --color-heading: #3e3f3f;
+  --font-display: var(--font-stardos), Georgia, serif;
+  --font-sans: var(--font-body), system-ui, sans-serif;
+}
+
+@layer base {
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  background-color: var(--color-cream);
+  background-image: url("/uploads/background_paper_pattern.jpg");
+  color: var(--color-ink);
+}
+}
+
+@layer base {
+  h1, h2, h3 {
+    color: var(--color-heading);
+  }
+}
+
+.prose:not(.prose-invert) {
+  --tw-prose-body: var(--color-ink);
+  --tw-prose-headings: var(--color-heading);
+  --tw-prose-links: var(--color-maroon);
+  --tw-prose-bullets: var(--color-gold);
+  --tw-prose-counters: var(--color-maroon);
+  --tw-prose-quotes: var(--color-maroon-dark);
+  --tw-prose-quote-borders: var(--color-gold);
+}
+
+.prose-invert {
+  --tw-prose-invert-body: rgb(255 255 255 / 0.9);
+  --tw-prose-invert-headings: #fff;
+  --tw-prose-invert-links: #fff;
+  --tw-prose-invert-bullets: rgb(255 255 255 / 0.7);
+  --tw-prose-invert-counters: rgb(255 255 255 / 0.7);
+  --tw-prose-invert-bold: #fff;
+}
