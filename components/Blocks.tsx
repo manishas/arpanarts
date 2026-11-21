@@ -175,6 +175,23 @@ function Text({ block }: { block: B<"PageBlocksText"> }) {
   );
 }
 
+/* Full-width card body: text before the first ### is an intro across the whole card;
+   from the first ### on, each sub-heading starts a column (see .card-cols in globals.css). */
+function WideBody({ content, invert, markerClass }: { content?: TinaMarkdownContent | null; invert?: boolean; markerClass: string }) {
+  const root = content as unknown as { type: string; children?: { type: string }[] } | null | undefined;
+  const children = root?.children ?? [];
+  const first = children.findIndex((c) => c.type === "h3");
+  if (first <= 0) return <Rich content={content} invert={invert} className={`${markerClass} card-cols`} />;
+  const intro = { ...root, children: children.slice(0, first) } as unknown as TinaMarkdownContent;
+  const rest = { ...root, children: children.slice(first) } as unknown as TinaMarkdownContent;
+  return (
+    <>
+      <Rich content={intro} invert={invert} className="mb-6" />
+      <Rich content={rest} invert={invert} className={`${markerClass} card-cols`} />
+    </>
+  );
+}
+
 function Cards({ block }: { block: B<"PageBlocksCards"> }) {
   const items = (block.items ?? []).filter(Boolean) as NonNullable<NonNullable<B<"PageBlocksCards">["items"]>[number]>[];
   const cols = block.columns === "1" ? "" : block.columns === "2" ? "md:grid-cols-2" : "md:grid-cols-2 lg:grid-cols-3";
@@ -234,7 +251,11 @@ function Cards({ block }: { block: B<"PageBlocksCards"> }) {
                   </h3>
                 )}
                 <div data-tina-field={tinaField(item, "body")} className="mt-3 flex-1">
-                  <Rich content={item.body} invert={invert} className={`${item.color === "gold" ? "prose-li:marker:text-maroon" : ""} ${item.wide ? "card-cols" : ""}`} />
+                  {item.wide ? (
+                    <WideBody content={item.body} invert={invert} markerClass={item.color === "gold" ? "prose-li:marker:text-maroon" : ""} />
+                  ) : (
+                    <Rich content={item.body} invert={invert} className={item.color === "gold" ? "prose-li:marker:text-maroon" : ""} />
+                  )}
                 </div>
                 {item.href && (
                   <SmartLink
