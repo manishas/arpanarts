@@ -181,7 +181,9 @@ function WideBody({ content, invert, markerClass }: { content?: TinaMarkdownCont
   const root = content as unknown as { type: string; children?: { type: string }[] } | null | undefined;
   const children = root?.children ?? [];
   const first = children.findIndex((c) => c.type === "h3");
-  if (first <= 0) return <Rich content={content} invert={invert} className={`${markerClass} card-cols`} />;
+  // No sub-headings: plain text, flowed into two columns on large screens so lines stay readable
+  if (first === -1) return <Rich content={content} invert={invert} className={`${markerClass} lg:columns-2 lg:gap-12 [&>*]:break-inside-avoid`} />;
+  if (first === 0) return <Rich content={content} invert={invert} className={`${markerClass} card-cols`} />;
   const intro = { ...root, children: children.slice(0, first) } as unknown as TinaMarkdownContent;
   const rest = { ...root, children: children.slice(first) } as unknown as TinaMarkdownContent;
   return (
@@ -194,11 +196,25 @@ function WideBody({ content, invert, markerClass }: { content?: TinaMarkdownCont
 
 function Cards({ block }: { block: B<"PageBlocksCards"> }) {
   const items = (block.items ?? []).filter(Boolean) as NonNullable<NonNullable<B<"PageBlocksCards">["items"]>[number]>[];
-  const cols = block.columns === "1" ? "" : block.columns === "2" ? "md:grid-cols-2" : "md:grid-cols-2 lg:grid-cols-3";
+  const cols = block.columns === "1" ? "" : block.columns === "2" ? "md:grid-cols-2" : "md:grid-cols-2 lg:grid-cols-6";
+  // 3-column layout uses a 6-track grid so a leftover pair of cards can share a row half-and-half.
+  // For each card: how many normal (non-wide) cards are in its run, and its position in that run.
+  const spanClass = items.map((item, n) => {
+    if (item.wide) return "md:col-span-2 lg:col-span-6";
+    if (block.columns === "1" || block.columns === "2") return "";
+    let start = n;
+    while (start > 0 && !items[start - 1].wide) start--;
+    let end = n;
+    while (end < items.length - 1 && !items[end + 1].wide) end++;
+    const runLength = end - start + 1;
+    const pos = n - start;
+    const trailingPair = runLength % 3 === 2 && pos >= runLength - 2;
+    return trailingPair ? "lg:col-span-3" : "lg:col-span-2";
+  });
   // Long lists of linkable cards (e.g. the syllabus levels) get a "jump to" row; label = title before " - " or " | "
   const jumpLinks = items
     .filter((i) => i.anchor && i.title)
-    .map((i) => ({ anchor: i.anchor as string, label: (i.title as string).split(/\s[-|–]\s/)[0] }));
+    .map((i) => ({ anchor: i.anchor as string, label: i.navLabel || (i.title as string).split(/\s[-|–]\s/)[0] }));
   return (
     <Section id={block.anchor}>
       <Heading text={block.heading} field={tinaField(block, "heading")} />
@@ -229,7 +245,7 @@ function Cards({ block }: { block: B<"PageBlocksCards"> }) {
               key={n}
               id={item.anchor || undefined}
               data-tina-field={tinaField(item)}
-              className={`flex flex-col overflow-hidden rounded-lg shadow-sm ${colored ?? "border-t-4 border-gold bg-white/90"} ${item.wide ? "md:col-span-2 lg:col-span-3" : ""}`}
+              className={`flex flex-col overflow-hidden rounded-lg shadow-sm ${colored ?? "border-t-4 border-gold bg-white/90"} ${spanClass[n]}`}
             >
               {item.image && (
                 // eslint-disable-next-line @next/next/no-img-element

@@ -6,6 +6,7 @@ blocks:
     columns: '3'
     items:
       - title: Nritta - Technique, Levels 1 to 3
+        navLabel: Nritta - Levels 1-3
         anchor: nrittabeginner
         color: gold
         wide: true
@@ -31,6 +32,7 @@ blocks:
           * Nritta - Groups XI to XV + Phrases from the Joyce Paul technique
           * Theory - Viniyogas - Mayoora till katakamukha
       - title: Margam - Repertoire, Levels 4 to 6
+        navLabel: Margam - Levels 4-6
         anchor: margambeginner
         color: ochre
         wide: true
@@ -57,6 +59,7 @@ blocks:
       - title: Level 7 - Post Margam / Arangetram
         anchor: postmargam
         color: maroon
+        wide: true
         body: |-
           In this level, you will be introduced to repertoire pieces outside of your basic margam that are more complex in terms of content and structure.
 

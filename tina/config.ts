@@ -105,6 +105,12 @@ const cardsBlock: Template = {
           label: "Full width",
           description: "Span the whole row. Each '###' sub-heading in the text starts a new column on large screens.",
         },
+        {
+          type: "string",
+          name: "navLabel",
+          label: "Jump link label (optional)",
+          description: "Text for this card's button in the jump links at the top. Defaults to the title up to ' - '.",
+        },
         anchorField,
       ],
     },
