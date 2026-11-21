@@ -3,7 +3,7 @@ title: Syllabus
 blocks:
   - _template: cards
     heading: Description of Levels
-    columns: '1'
+    columns: '3'
     items:
       - title: Level 1 - Nritta Beginner
         anchor: nrittabeginner

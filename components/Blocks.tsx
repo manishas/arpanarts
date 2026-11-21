@@ -50,10 +50,10 @@ function Heading({ text, field, sub, subField }: { text?: string | null; field?:
 }
 
 const colorClass: Record<string, string> = {
-  maroon: "bg-maroon-dark text-white",
+  maroon: "bg-maroon text-white",
   ochre: "bg-ochre text-white",
   olive: "bg-olive text-white",
-  gold: "bg-gold text-maroon-dark",
+  gold: "bg-[#ecd08a] text-ink",
 };
 
 function SmartLink({ href, className, children, ...rest }: { href: string; className?: string; children: React.ReactNode } & React.HTMLAttributes<HTMLAnchorElement>) {
@@ -178,6 +178,10 @@ function Text({ block }: { block: B<"PageBlocksText"> }) {
 function Cards({ block }: { block: B<"PageBlocksCards"> }) {
   const items = (block.items ?? []).filter(Boolean) as NonNullable<NonNullable<B<"PageBlocksCards">["items"]>[number]>[];
   const cols = block.columns === "1" ? "" : block.columns === "2" ? "md:grid-cols-2" : "md:grid-cols-2 lg:grid-cols-3";
+  // Long lists of linkable cards (e.g. the syllabus levels) get a "jump to" row; label = title before " - " or " | "
+  const jumpLinks = items
+    .filter((i) => i.anchor && i.title)
+    .map((i) => ({ anchor: i.anchor as string, label: (i.title as string).split(/\s[-|–]\s/)[0] }));
   return (
     <Section id={block.anchor}>
       <Heading text={block.heading} field={tinaField(block, "heading")} />
@@ -185,6 +189,19 @@ function Cards({ block }: { block: B<"PageBlocksCards"> }) {
         <div data-tina-field={tinaField(block, "intro")} className="mb-8 max-w-3xl">
           <Rich content={block.intro} />
         </div>
+      )}
+      {jumpLinks.length >= 5 && (
+        <nav aria-label="Jump to" className="mb-8 flex flex-wrap gap-2">
+          {jumpLinks.map((l) => (
+            <a
+              key={l.anchor}
+              href={`#${l.anchor}`}
+              className="rounded-full border border-maroon/30 bg-white/80 px-4 py-1.5 text-sm font-semibold text-maroon transition hover:bg-maroon hover:text-white"
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
       )}
       <div className={`grid gap-6 ${cols}`}>
         {items.map((item, n) => {
@@ -217,7 +234,7 @@ function Cards({ block }: { block: B<"PageBlocksCards"> }) {
                   </h3>
                 )}
                 <div data-tina-field={tinaField(item, "body")} className="mt-3 flex-1">
-                  <Rich content={item.body} invert={invert} />
+                  <Rich content={item.body} invert={invert} className={item.color === "gold" ? "prose-li:marker:text-maroon" : ""} />
                 </div>
                 {item.href && (
                   <SmartLink
