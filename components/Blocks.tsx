@@ -199,6 +199,8 @@ function Cards({ block }: { block: B<"PageBlocksCards"> }) {
   const cols = block.columns === "1" ? "" : block.columns === "2" ? "md:grid-cols-2" : "md:grid-cols-2 lg:grid-cols-6";
   // 3-column layout uses a 6-track grid so a leftover pair of cards can share a row half-and-half.
   // For each card: how many normal (non-wide) cards are in its run, and its position in that run.
+  // When a section mixes full-width and normal cards, give every card the same (larger) title style
+  const anyWide = items.some((i) => i.wide);
   const spanClass = items.map((item, n) => {
     if (item.wide) return "md:col-span-2 lg:col-span-6";
     if (block.columns === "1" || block.columns === "2") return "";
@@ -255,7 +257,7 @@ function Cards({ block }: { block: B<"PageBlocksCards"> }) {
                 {item.title && (
                   <h3
                     data-tina-field={tinaField(item, "title")}
-                    className={`font-display text-2xl ${item.wide ? "mb-4 md:text-3xl" : ""} ${invert ? "text-white" : item.color === "gold" ? "text-maroon-dark" : "text-maroon"}`}
+                    className={`font-display text-2xl ${anyWide ? "mb-4 md:text-3xl" : ""} ${invert ? "text-white" : item.color === "gold" ? "text-maroon-dark" : "text-maroon"}`}
                   >
                     {item.href ? (
                       <SmartLink href={item.href} className="hover:underline">
