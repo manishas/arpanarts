@@ -35,23 +35,27 @@ blocks:
         color: ochre
         wide: true
         body: |-
+          For every piece in the repertoire, you learn its mathematical annotations, musicality, lyrics and their interpretation, alongside the physical execution.
+
           ### Level 4 · Beginner
 
-          In this level, you will be introduced to the repertoire sequence of Bharatanatyam. Traditionally this is referred to as a margam. Some of the first few pieces you will learn in this path are Alarippu, Pushpanjali, Kavuthvam etc followed by jatiswaram and shabdam.
+          An introduction to the margam, the traditional repertoire sequence of Bharatanatyam.
 
-          For every piece in the repertoire you will learn the mathematical annotations, basic musicality, lyrics and its interpretation aside from the physical execution.
+          * **Pieces:** Alarippu, Pushpanjali, Kavuthvam, followed by Jatiswaram and Shabdam
 
           ### Level 5 · Intermediate
 
-          In this level, you will be introduced to repertoire pieces with intermediate levels of complexity. Some examples of pieces you might learn are keerthanam, javali and thillana.
+          Repertoire pieces of intermediate complexity.
 
-          For every piece in the repertoire you will learn the mathematical annotations, basic musicality, nattuvangam, lyrics and its interpretation aside from the physical execution.
+          * **Pieces:** such as Keerthanam, Javali and Thillana
+          * **New:** Nattuvangam
 
           ### Level 6 · Advanced
 
-          In this level, you will be introduced to repertoire pieces with advanced levels of complexity. Some examples of pieces you might learn are ashtapadi, varnam, padam, dashavataram etc.
+          Repertoire pieces of advanced complexity.
 
-          For every piece in the repertoire you will learn the mathematical annotations, basic musicality, nattuvangam, lyrics and its interpretation aside from the physical execution. You will also be introduced to the art of choreography and what it takes to build an idea into physical reality.
+          * **Pieces:** such as Ashtapadi, Varnam, Padam and Dashavataram
+          * **New:** Choreography, and what it takes to build an idea into physical reality
       - title: Level 7 - Post Margam / Arangetram
         anchor: postmargam
         color: maroon

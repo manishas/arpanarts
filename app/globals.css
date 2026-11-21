@@ -87,8 +87,14 @@ h1, h2, h3 {
     break-before: column;
     margin-top: 0;
   }
-  .card-cols > :first-child {
+  .card-cols > :first-child,
+  .card-cols > h3:first-of-type {
     break-before: auto;
+  }
+  /* Text before the first sub-heading is a shared intro: run it across all columns */
+  .card-cols > :not(h3 ~ *):not(h3) {
+    column-span: all;
+    margin-bottom: 1.5rem;
   }
 }
 
