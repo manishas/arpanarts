@@ -57,6 +57,7 @@ blocks:
 
           * **Pieces:** such as Ashtapadi, Varnam, Padam and Dashavataram
       - title: Level 7 - Post Margam / Arangetram
+        navLabel: Post-Margam/Arangetram - Level 7
         anchor: postmargam
         color: maroon
         wide: true
