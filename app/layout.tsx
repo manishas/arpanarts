@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Stardos_Stencil, Source_Sans_3 } from "next/font/google";
+import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
 import { getSettings } from "@/lib/data";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
-const stardos = Stardos_Stencil({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-stardos" });
+const display = Cormorant_Garamond({ weight: ["500", "600", "700"], subsets: ["latin"], variable: "--font-display-face" });
 const body = Source_Sans_3({ subsets: ["latin"], variable: "--font-body" });
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const settings = await getSettings();
   return (
-    <html lang="en" className={`${stardos.variable} ${body.variable}`}>
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="flex min-h-screen flex-col font-sans antialiased">
         <Header settings={settings} />
         <main className="flex-1">{children}</main>

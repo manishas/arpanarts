@@ -50,10 +50,10 @@ function Heading({ text, field, sub, subField }: { text?: string | null; field?:
 }
 
 const colorClass: Record<string, string> = {
-  maroon: "bg-maroon-dark text-white",
+  maroon: "bg-maroon text-white",
   ochre: "bg-ochre text-white",
   olive: "bg-olive text-white",
-  gold: "bg-gold text-maroon-dark",
+  gold: "bg-[#ecd08a] text-ink",
 };
 
 function SmartLink({ href, className, children, ...rest }: { href: string; className?: string; children: React.ReactNode } & React.HTMLAttributes<HTMLAnchorElement>) {
@@ -175,9 +175,48 @@ function Text({ block }: { block: B<"PageBlocksText"> }) {
   );
 }
 
+/* Full-width card body: text before the first ### is an intro across the whole card;
+   from the first ### on, each sub-heading starts a column (see .card-cols in globals.css). */
+function WideBody({ content, invert, markerClass }: { content?: TinaMarkdownContent | null; invert?: boolean; markerClass: string }) {
+  const root = content as unknown as { type: string; children?: { type: string }[] } | null | undefined;
+  const children = root?.children ?? [];
+  const first = children.findIndex((c) => c.type === "h3");
+  // No sub-headings: text runs across the card; a bullet list is laid out in three columns on large screens
+  if (first === -1) return <Rich content={content} invert={invert} className={`${markerClass} wide-plain`} />;
+  if (first === 0) return <Rich content={content} invert={invert} className={`${markerClass} card-cols`} />;
+  const intro = { ...root, children: children.slice(0, first) } as unknown as TinaMarkdownContent;
+  const rest = { ...root, children: children.slice(first) } as unknown as TinaMarkdownContent;
+  return (
+    <>
+      <Rich content={intro} invert={invert} className="mb-6" />
+      <Rich content={rest} invert={invert} className={`${markerClass} card-cols`} />
+    </>
+  );
+}
+
 function Cards({ block }: { block: B<"PageBlocksCards"> }) {
   const items = (block.items ?? []).filter(Boolean) as NonNullable<NonNullable<B<"PageBlocksCards">["items"]>[number]>[];
-  const cols = block.columns === "1" ? "" : block.columns === "2" ? "md:grid-cols-2" : "md:grid-cols-2 lg:grid-cols-3";
+  const cols = block.columns === "1" ? "" : block.columns === "2" ? "md:grid-cols-2" : "md:grid-cols-2 lg:grid-cols-6";
+  // 3-column layout uses a 6-track grid so a leftover pair of cards can share a row half-and-half.
+  // For each card: how many normal (non-wide) cards are in its run, and its position in that run.
+  // When a section mixes full-width and normal cards, give every card the same (larger) title style
+  const anyWide = items.some((i) => i.wide);
+  const spanClass = items.map((item, n) => {
+    if (item.wide) return "md:col-span-2 lg:col-span-6";
+    if (block.columns === "1" || block.columns === "2") return "";
+    let start = n;
+    while (start > 0 && !items[start - 1].wide) start--;
+    let end = n;
+    while (end < items.length - 1 && !items[end + 1].wide) end++;
+    const runLength = end - start + 1;
+    const pos = n - start;
+    const trailingPair = runLength % 3 === 2 && pos >= runLength - 2;
+    return trailingPair ? "lg:col-span-3" : "lg:col-span-2";
+  });
+  // Long lists of linkable cards (e.g. the syllabus levels) get a "jump to" row; label = title before " - " or " | "
+  const jumpLinks = items
+    .filter((i) => i.anchor && i.title)
+    .map((i) => ({ anchor: i.anchor as string, label: i.navLabel || (i.title as string).split(/\s[-|–]\s/)[0] }));
   return (
     <Section id={block.anchor}>
       <Heading text={block.heading} field={tinaField(block, "heading")} />
@@ -185,6 +224,19 @@ function Cards({ block }: { block: B<"PageBlocksCards"> }) {
         <div data-tina-field={tinaField(block, "intro")} className="mb-8 max-w-3xl">
           <Rich content={block.intro} />
         </div>
+      )}
+      {jumpLinks.length >= 5 && (
+        <nav aria-label="Jump to" className="mb-8 flex flex-wrap gap-2">
+          {jumpLinks.map((l) => (
+            <a
+              key={l.anchor}
+              href={`#${l.anchor}`}
+              className="rounded-full border border-maroon/30 bg-white/80 px-4 py-1.5 text-sm font-semibold text-maroon transition hover:bg-maroon hover:text-white"
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
       )}
       <div className={`grid gap-6 ${cols}`}>
         {items.map((item, n) => {
@@ -195,7 +247,7 @@ function Cards({ block }: { block: B<"PageBlocksCards"> }) {
               key={n}
               id={item.anchor || undefined}
               data-tina-field={tinaField(item)}
-              className={`flex flex-col overflow-hidden rounded-lg shadow-sm ${colored ?? "border-t-4 border-gold bg-white/90"}`}
+              className={`flex flex-col overflow-hidden rounded-lg shadow-sm ${colored ?? "border-t-4 border-gold bg-white/90"} ${spanClass[n]}`}
             >
               {item.image && (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -205,7 +257,7 @@ function Cards({ block }: { block: B<"PageBlocksCards"> }) {
                 {item.title && (
                   <h3
                     data-tina-field={tinaField(item, "title")}
-                    className={`font-display text-2xl ${invert ? "text-white" : item.color === "gold" ? "text-maroon-dark" : "text-maroon"}`}
+                    className={`font-display text-2xl ${anyWide ? "mb-4 md:text-3xl" : ""} ${invert ? "text-white" : item.color === "gold" ? "text-maroon-dark" : "text-maroon"}`}
                   >
                     {item.href ? (
                       <SmartLink href={item.href} className="hover:underline">
@@ -217,7 +269,11 @@ function Cards({ block }: { block: B<"PageBlocksCards"> }) {
                   </h3>
                 )}
                 <div data-tina-field={tinaField(item, "body")} className="mt-3 flex-1">
-                  <Rich content={item.body} invert={invert} />
+                  {item.wide ? (
+                    <WideBody content={item.body} invert={invert} markerClass={item.color === "gold" ? "prose-li:marker:text-maroon" : ""} />
+                  ) : (
+                    <Rich content={item.body} invert={invert} className={item.color === "gold" ? "prose-li:marker:text-maroon" : ""} />
+                  )}
                 </div>
                 {item.href && (
                   <SmartLink

@@ -3,60 +3,70 @@ title: Syllabus
 blocks:
   - _template: cards
     heading: Description of Levels
-    columns: '1'
+    columns: '3'
     items:
-      - title: Level 1 - Nritta Beginner
+      - title: Nritta - Technique, Levels 1 to 3
+        navLabel: Nritta - Levels 1-3
         anchor: nrittabeginner
         color: gold
+        wide: true
         body: |-
+          ### Level 1 · Beginner
+
           This is the very start of your training at Arpan. You will learn the first learning block in the technique and theory of dance. For Bharatanatyam, this includes the following:
 
           * Nritta - Groups I to V
           * Theory - Samyuta Hasta, Asamyuta Hasta, Shirobheda, Drishti bheda and Greeva bheda
-      - title: Level 2 - Nritta Intermediate
-        anchor: nrittaintermediate
-        color: gold
-        body: |-
-          In this course, you have started off on your basic technique and are already comfortable with dancing in different mandalas. You will now add another 40 odd adavus into your repertoire of adavus:
+
+          ### Level 2 · Intermediate
+
+          In this course, you have started off on your basic technique and are already comfortable with dancing in different mandalas. You will now add 40 odd adavus into your repertoire of adavus:
 
           * Nritta - Groups VI to X
           * Theory - Mandala Bheda, Viniyogas - Pataka till kartarimukha, Jaathis
-      - title: Level 3 - Nritta Advanced
-        anchor: nrittaadvanced
-        color: gold
-        body: |-
-          You will finish the last leg of your technique classes, learn how to use adavus in different counting sequences and learn special movements created by Joyce Paul to add the extra flourish to your technique:
+
+          ### Level 3 · Advanced
+
+          You will complete your technique training, learn adavus in different counting sequences and add the flourish of special movements created by Joyce Paul:
 
           * Nritta - Groups XI to XV + Phrases from the Joyce Paul technique
           * Theory - Viniyogas - Mayoora till katakamukha
-      - title: Level 4 - Margam Beginner
+      - title: Margam - Repertoire, Levels 4 to 6
+        navLabel: Margam - Levels 4-6
         anchor: margambeginner
         color: ochre
+        wide: true
         body: |-
-          In this level, you will be introduced to the repertoire sequence of Bharatanatyam. Traditionally this is referred to as a margam. Some of the first few pieces you will learn in this path are Alarippu, Pushpanjali, Kavuthvam etc followed by jatiswaram and shabdam.
+          For every piece in the repertoire, you learn its mathematical annotations, musicality, lyrics and their interpretation, alongside the physical execution.
 
-          For every piece in the repertoire you will learn the mathematical annotations, basic musicality, lyrics and its interpretation aside from the physical execution.
-      - title: Level 5 - Margam Intermediate
-        anchor: margamintermediate
-        color: ochre
-        body: |-
-          In this level, you will be introduced to repertoire pieces with intermediate levels of complexity. Some examples of pieces you might learn are keerthanam, javali and thillana.
+          ### Level 4 · Beginner
 
-          For every piece in the repertoire you will learn the mathematical annotations, basic musicality, nattuvangam, lyrics and its interpretation aside from the physical execution.
-      - title: Level 6 - Margam Advanced
-        anchor: margamadvanced
-        color: ochre
-        body: |-
-          In this level, you will be introduced to repertoire pieces with advanced levels of complexity. Some examples of pieces you might learn are ashtapadi, varnam, padam, dashavataram etc.
+          An introduction to the margam, the traditional repertoire sequence of Bharatanatyam.
 
-          For every piece in the repertoire you will learn the mathematical annotations, basic musicality, nattuvangam, lyrics and its interpretation aside from the physical execution. You will also be introduced to the art of choreography and what it takes to build an idea into physical reality.
+          * **Pieces:** such as Alarippu, Pushpanjali, Kavuthvam, followed by Jatiswaram and Shabdam
+
+          ### Level 5 · Intermediate
+
+          Repertoire pieces of intermediate complexity, and an introduction to Nattuvangam.
+
+          * **Pieces:** such as Keerthanam, Javali and Thillana
+
+          ### Level 6 · Advanced
+
+          Repertoire pieces of advanced complexity, learn choreography: convert ideas to physical reality.
+
+          * **Pieces:** such as Ashtapadi, Varnam, Padam and Dashavataram
       - title: Level 7 - Post Margam / Arangetram
+        navLabel: Post-Margam/Arangetram - Level 7
         anchor: postmargam
         color: maroon
+        wide: true
         body: |-
-          In this level, you will be introduced to repertoire pieces outside of your basic margam that are more complex in terms of content and structure.
+          Repertoire pieces beyond your basic margam that are more complex in content and structure. At this level, you will:
 
-          At this level, you will spend more time on choreography and create your own pieces. You will learn more complex mathematical annotations, nattuvangam, lyrics and its interpretation aside from the physical execution. You will also contribute to teaching at ARPAN to learn teaching skills.
+          * Spend more time on choreography and create your own pieces
+          * Learn more complex mathematical annotations, nattuvangam, lyrics and their interpretation
+          * Contribute to teaching at ARPAN to learn teaching skills
       - title: Master | Personal Intensives with Choreographer
         anchor: master
         color: maroon

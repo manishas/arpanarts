@@ -4,14 +4,14 @@
 @theme {
   --color-maroon: #86281e;
   --color-maroon-dark: #670b0b;
-  --color-ochre: #b9770a;
+  --color-ochre: #a0680a; /* darkened from #b9770a for 4.5:1 contrast with white */
   --color-olive: #676f33;
   --color-gold: #e1ac21;
   --color-gold-dark: #b39300;
   --color-cream: #fff8dc;
   --color-ink: #333333;
   --color-heading: #3e3f3f;
-  --font-display: var(--font-stardos), Georgia, serif;
+  --font-display: var(--font-display-face), Georgia, serif;
   --font-sans: var(--font-body), system-ui, sans-serif;
 }
 
@@ -22,8 +22,10 @@ html {
 }
 
 body {
-  background-color: var(--color-cream);
-  background-image: url("/uploads/background_paper_pattern.jpg");
+  background-color: #fbf4e4;
+  /* paper texture kept, but softened so content stands out */
+  background-image: linear-gradient(rgb(251 244 228 / 0.7), rgb(251 244 228 / 0.7)),
+    url("/uploads/background_paper_pattern.jpg");
   color: var(--color-ink);
 }
 }
@@ -31,6 +33,7 @@ body {
 @layer base {
   h1, h2, h3 {
     color: var(--color-heading);
+    font-weight: 600;
   }
 }
 
@@ -51,4 +54,62 @@ body {
   --tw-prose-invert-bullets: rgb(255 255 255 / 0.7);
   --tw-prose-invert-counters: rgb(255 255 255 / 0.7);
   --tw-prose-invert-bold: #fff;
+}
+
+/* Cormorant defaults to old-style figures; use even-height numbers (event dates etc.) */
+.font-display,
+h1, h2, h3 {
+  font-variant-numeric: lining-nums;
+}
+
+/* Full-width cards: each ### sub-heading becomes its own column on large screens */
+.card-cols h3 {
+  margin-top: 1.5em;
+  font-size: 1.25rem;
+  color: var(--color-maroon-dark);
+}
+.card-cols > :first-child {
+  margin-top: 0;
+}
+.prose-invert.card-cols h3 {
+  color: #fff;
+}
+@media (min-width: 1024px) {
+  .card-cols {
+    column-count: 3;
+    column-gap: 3rem;
+    column-rule: 1px solid rgb(103 11 11 / 0.15);
+  }
+  .prose-invert.card-cols {
+    column-rule-color: rgb(255 255 255 / 0.3);
+  }
+  .card-cols h3 {
+    break-before: column;
+    margin-top: 0;
+  }
+  .card-cols > :first-child,
+  .card-cols > h3:first-of-type {
+    break-before: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wide-plain > ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 3rem;
+  }
+  .wide-plain > ul > li {
+    margin-top: 0;
+  }
+}
+
+/* Level-4 headings in rich text are used as lead/intro paragraphs:
+   set them in the readable body face rather than the display face. */
+.prose h4 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: var(--color-maroon-dark);
 }
