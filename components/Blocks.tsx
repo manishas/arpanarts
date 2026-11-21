@@ -167,7 +167,7 @@ function Text({ block }: { block: B<"PageBlocksText"> }) {
   const body = block.body as unknown as { children?: unknown[] } | null | undefined;
   const headingOnly = style === "plain" && !(body?.children?.length);
   return (
-    <Section id={block.anchor} className={headingOnly ? "pb-0 md:pb-0" : ""}>
+    <Section id={block.anchor} className={headingOnly ? "pt-6 pb-0 md:pt-8 md:pb-0 -mb-4" : ""}>
       <div className={style === "card" ? "rounded-lg border-t-4 border-gold bg-white/90 p-6 shadow-sm md:p-10" : ""}>
         <Heading
           text={block.heading}

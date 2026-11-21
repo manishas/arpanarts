@@ -3,7 +3,6 @@ title: Performing with Arpan
 blocks:
   - _template: text
     heading: Learn about Arpan performances
-    subheading: mARgam | NAtya for Social Change | Community Outreach
     style: plain
   - _template: cards
     columns: '3'
