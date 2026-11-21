@@ -5,52 +5,49 @@ blocks:
     heading: Learn about Arpan performances
     subheading: mARgam | NAtya for Social Change | Community Outreach
     style: plain
-  - _template: text
-    heading: mARgam
-    style: card
-    body: |-
-      We present traditional margams that start with Alarippu/Pushpanjali/Kauthvam etc but we also do extensive research on texts, contemporary poets and local cultures to create Margam pieces that express those concepts. Some concepts require us to create new boundaries.
+  - _template: cards
+    columns: '3'
+    items:
+      - title: mARgam
+        body: |-
+          We present traditional margams that start with Alarippu/Pushpanjali/Kauthvam etc but we also do extensive research on texts, contemporary poets and local cultures to create Margam pieces that express those concepts. Some concepts require us to create new boundaries.
 
-      #### Some of our previous works have been
+          #### Some of our previous works have been
 
-      * Varnam on Queen Shanthala
-      * A tribute to Mother Teresa
-      * Jatiswaram in Ranjini to suit different dancer body needs
-      * A vandana to Maa Sharada - Revival of old school prayers into a Sharada vandana
-      * Andal - the metaphysical and cosmic aspects - Varnam
-      * NetrVaren padam - a story about promises kept and broken.
-      * The agony of the 'Regretful Krishna'
-      * ...and many more
-  - _template: text
-    heading: NAtya for Social Change
-    style: card
-    body: |-
-      Our focus outside of the regular mArgam is on creating works that impact the world around us. It allows us to use our art forms to respond in a peaceful manner to sources of stress and pain. Previous works include:
+          * Varnam on Queen Shanthala
+          * A tribute to Mother Teresa
+          * Jatiswaram in Ranjini to suit different dancer body needs
+          * A vandana to Maa Sharada - Revival of old school prayers into a Sharada vandana
+          * Andal - the metaphysical and cosmic aspects - Varnam
+          * NetrVaren padam - a story about promises kept and broken.
+          * The agony of the 'Regretful Krishna'
+          * ...and many more
+      - title: NAtya for Social Change
+        body: |-
+          Our focus outside of the regular mArgam is on creating works that impact the world around us. It allows us to use our art forms to respond in a peaceful manner to sources of stress and pain. Previous works include:
 
-      * YAVANIKA - veiled perspectives
-      * Kalaprayanam - Journey of life through time and space
-      * Juhi ki kali
-      * Arpan - an offering - bringing forms together
-      * Annotating Eras
+          * YAVANIKA - veiled perspectives
+          * Kalaprayanam - Journey of life through time and space
+          * Juhi ki kali
+          * Arpan - an offering - bringing forms together
+          * Annotating Eras
 
-      #### In the Works
+          #### In the Works
 
-      * The Faces in the jar by the door
-      * The beauty of the Pacific Northwest
-      * The story of Aarash the Persian Warrior
-      * Weaving Mind Magic (mental health)
-      * सत्त्व (sattva): inner strength
-      * Shunya: Size Zero
-      * Gharonda - the empty nester
-  - _template: text
-    heading: Community Outreach
-    style: card
-    body: |-
-      We will work with you to understand how our performances can have an impact on your organisation. Be it a school, a senior citizen's home, a prison, a university, a women's shelter...
+          * The Faces in the jar by the door
+          * The beauty of the Pacific Northwest
+          * The story of Aarash the Persian Warrior
+          * Weaving Mind Magic (mental health)
+          * सत्त्व (sattva): inner strength
+          * Shunya: Size Zero
+          * Gharonda - the empty nester
+      - title: Community Outreach
+        body: |-
+          We will work with you to understand how our performances can have an impact on your organisation. Be it a school, a senior citizen's home, a prison, a university, a women's shelter...
 
-      > "Making the world a loving space, one movement at a time" — Dr. Joyce Paul Siamak
+          > "Making the world a loving space, one movement at a time" — Dr. Joyce Paul Siamak
 
-      > "My mission? - Imbuing social change through dance by changing perspectives" — Dr. Joyce Paul Siamak
+          > "My mission? - Imbuing social change through dance by changing perspectives" — Dr. Joyce Paul Siamak
   - _template: text
     heading: Perform at School Events
     subheading: Deep breath, get set and....Dhalanku Taka Dhiku Taka TadhimGinnaTom!!!
