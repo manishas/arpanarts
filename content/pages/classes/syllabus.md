@@ -41,7 +41,7 @@ blocks:
 
           An introduction to the margam, the traditional repertoire sequence of Bharatanatyam.
 
-          * **Pieces:** Alarippu, Pushpanjali, Kavuthvam, followed by Jatiswaram and Shabdam
+          * **Pieces:** such as Alarippu, Pushpanjali, Kavuthvam, followed by Jatiswaram and Shabdam
 
           ### Level 5 · Intermediate
 
