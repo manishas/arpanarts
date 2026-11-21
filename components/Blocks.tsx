@@ -212,7 +212,7 @@ function Cards({ block }: { block: B<"PageBlocksCards"> }) {
               key={n}
               id={item.anchor || undefined}
               data-tina-field={tinaField(item)}
-              className={`flex flex-col overflow-hidden rounded-lg shadow-sm ${colored ?? "border-t-4 border-gold bg-white/90"}`}
+              className={`flex flex-col overflow-hidden rounded-lg shadow-sm ${colored ?? "border-t-4 border-gold bg-white/90"} ${item.wide ? "md:col-span-2 lg:col-span-3" : ""}`}
             >
               {item.image && (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -222,7 +222,7 @@ function Cards({ block }: { block: B<"PageBlocksCards"> }) {
                 {item.title && (
                   <h3
                     data-tina-field={tinaField(item, "title")}
-                    className={`font-display text-2xl ${invert ? "text-white" : item.color === "gold" ? "text-maroon-dark" : "text-maroon"}`}
+                    className={`font-display text-2xl ${item.wide ? "mb-4 md:text-3xl" : ""} ${invert ? "text-white" : item.color === "gold" ? "text-maroon-dark" : "text-maroon"}`}
                   >
                     {item.href ? (
                       <SmartLink href={item.href} className="hover:underline">
@@ -234,7 +234,7 @@ function Cards({ block }: { block: B<"PageBlocksCards"> }) {
                   </h3>
                 )}
                 <div data-tina-field={tinaField(item, "body")} className="mt-3 flex-1">
-                  <Rich content={item.body} invert={invert} className={item.color === "gold" ? "prose-li:marker:text-maroon" : ""} />
+                  <Rich content={item.body} invert={invert} className={`${item.color === "gold" ? "prose-li:marker:text-maroon" : ""} ${item.wide ? "card-cols" : ""}`} />
                 </div>
                 {item.href && (
                   <SmartLink

@@ -62,6 +62,36 @@ h1, h2, h3 {
   font-variant-numeric: lining-nums;
 }
 
+/* Full-width cards: each ### sub-heading becomes its own column on large screens */
+.card-cols h3 {
+  margin-top: 1.5em;
+  font-size: 1.25rem;
+  color: var(--color-maroon-dark);
+}
+.card-cols > :first-child {
+  margin-top: 0;
+}
+.prose-invert.card-cols h3 {
+  color: #fff;
+}
+@media (min-width: 1024px) {
+  .card-cols {
+    column-count: 3;
+    column-gap: 3rem;
+    column-rule: 1px solid rgb(103 11 11 / 0.15);
+  }
+  .prose-invert.card-cols {
+    column-rule-color: rgb(255 255 255 / 0.3);
+  }
+  .card-cols h3 {
+    break-before: column;
+    margin-top: 0;
+  }
+  .card-cols > :first-child {
+    break-before: auto;
+  }
+}
+
 /* Level-4 headings in rich text are used as lead/intro paragraphs:
    set them in the readable body face rather than the display face. */
 .prose h4 {
