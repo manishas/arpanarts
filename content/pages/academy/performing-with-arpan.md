@@ -48,17 +48,16 @@ blocks:
           > "Making the world a loving space, one movement at a time" — Dr. Joyce Paul Siamak
 
           > "My mission? - Imbuing social change through dance by changing perspectives" — Dr. Joyce Paul Siamak
-  - _template: text
+  - _template: cards
     heading: Perform at School Events
-    subheading: Deep breath, get set and....Dhalanku Taka Dhiku Taka TadhimGinnaTom!!!
-    style: highlight
-    body: |-
+    intro: |-
+      **Deep breath, get set and....Dhalanku Taka Dhiku Taka TadhimGinnaTom!!!**
+
       Two of our popular school events have been Ehsaas and Arpan Diwas. Both are geared toward providing a safe and non-judgemental platform for students to showcase what they have learnt through the year.
 
       Performing at ARPAN is one of the most fulfilling experiences a dancer will undergo in his or her time as a student of classical dance. Students learn costuming, makeup, stage design, lighting, emceeing and stage management. They also learn how to manage a small project, coordinate with classmates and get their show on stage.
 
       Whether it is performing a traditional margam with mythological story lines or concepts from Modern society or even new works that are created around active socio-political issues, everyone can find something that they are intensely passionate about.
-  - _template: cards
     columns: '2'
     items:
       - title: Arpan Diwas
