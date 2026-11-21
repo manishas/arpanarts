@@ -181,8 +181,8 @@ function WideBody({ content, invert, markerClass }: { content?: TinaMarkdownCont
   const root = content as unknown as { type: string; children?: { type: string }[] } | null | undefined;
   const children = root?.children ?? [];
   const first = children.findIndex((c) => c.type === "h3");
-  // No sub-headings: plain text, flowed into two columns on large screens so lines stay readable
-  if (first === -1) return <Rich content={content} invert={invert} className={`${markerClass} lg:columns-2 lg:gap-12 [&>*]:break-inside-avoid`} />;
+  // No sub-headings: text runs across the card; a bullet list is laid out in three columns on large screens
+  if (first === -1) return <Rich content={content} invert={invert} className={`${markerClass} wide-plain`} />;
   if (first === 0) return <Rich content={content} invert={invert} className={`${markerClass} card-cols`} />;
   const intro = { ...root, children: children.slice(0, first) } as unknown as TinaMarkdownContent;
   const rest = { ...root, children: children.slice(first) } as unknown as TinaMarkdownContent;

@@ -93,6 +93,17 @@ h1, h2, h3 {
   }
 }
 
+@media (min-width: 1024px) {
+  .wide-plain > ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 3rem;
+  }
+  .wide-plain > ul > li {
+    margin-top: 0;
+  }
+}
+
 /* Level-4 headings in rich text are used as lead/intro paragraphs:
    set them in the readable body face rather than the display face. */
 .prose h4 {

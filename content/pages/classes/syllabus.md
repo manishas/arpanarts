@@ -62,9 +62,11 @@ blocks:
         color: maroon
         wide: true
         body: |-
-          In this level, you will be introduced to repertoire pieces outside of your basic margam that are more complex in terms of content and structure.
+          Repertoire pieces beyond your basic margam that are more complex in content and structure. At this level, you will:
 
-          At this level, you will spend more time on choreography and create your own pieces. You will learn more complex mathematical annotations, nattuvangam, lyrics and its interpretation aside from the physical execution. You will also contribute to teaching at ARPAN to learn teaching skills.
+          * Spend more time on choreography and create your own pieces
+          * Learn more complex mathematical annotations, nattuvangam, lyrics and their interpretation
+          * Contribute to teaching at ARPAN to learn teaching skills
       - title: Master | Personal Intensives with Choreographer
         anchor: master
         color: maroon
