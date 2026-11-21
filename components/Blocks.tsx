@@ -22,6 +22,11 @@ export function Rich({ content, invert, className = "" }: { content?: TinaMarkdo
   );
 }
 
+/** True when a rich-text field actually has content (Tina returns an empty root for blank fields). */
+function hasRich(content: unknown) {
+  return !!(content as { children?: unknown[] } | null | undefined)?.children?.length;
+}
+
 function Section({ children, id, className = "" }: { children: React.ReactNode; id?: string | null; className?: string }) {
   return (
     <section id={id || undefined} className={`mx-auto max-w-6xl px-4 py-8 md:py-10 ${className}`}>
@@ -158,8 +163,11 @@ function Text({ block }: { block: B<"PageBlocksText"> }) {
       </section>
     );
   }
+  // A plain heading with no text under it is a page/section title for the blocks that follow: no bottom padding
+  const body = block.body as unknown as { children?: unknown[] } | null | undefined;
+  const headingOnly = style === "plain" && !(body?.children?.length);
   return (
-    <Section id={block.anchor}>
+    <Section id={block.anchor} className={headingOnly ? "pb-0 md:pb-0" : ""}>
       <div className={style === "card" ? "rounded-lg border-t-4 border-gold bg-white/90 p-6 shadow-sm md:p-10" : ""}>
         <Heading
           text={block.heading}
@@ -220,7 +228,7 @@ function Cards({ block }: { block: B<"PageBlocksCards"> }) {
   return (
     <Section id={block.anchor}>
       <Heading text={block.heading} field={tinaField(block, "heading")} />
-      {block.intro && (
+      {hasRich(block.intro) && (
         <div data-tina-field={tinaField(block, "intro")} className="mb-8 max-w-3xl">
           <Rich content={block.intro} />
         </div>
@@ -354,7 +362,7 @@ function Faq({ block }: { block: B<"PageBlocksFaq"> }) {
   return (
     <Section>
       <Heading text={block.heading} field={tinaField(block, "heading")} />
-      {block.intro && (
+      {hasRich(block.intro) && (
         <div data-tina-field={tinaField(block, "intro")} className="mb-6 max-w-3xl">
           <Rich content={block.intro} />
         </div>
@@ -554,7 +562,7 @@ function ListIntro({ block }: { block: B<"PageBlocksEventsList" | "PageBlocksAra
   return (
     <>
       <Heading text={block.heading} field={tinaField(block, "heading")} />
-      {block.intro && (
+      {hasRich(block.intro) && (
         <div data-tina-field={tinaField(block, "intro")} className="mb-8 max-w-3xl">
           <Rich content={block.intro} />
         </div>
