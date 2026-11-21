@@ -51,7 +51,7 @@ blocks:
 
           ### Level 6 · Advanced
 
-          Repertoire pieces of advanced complexity, and an introduction to choreography: what it takes to build an idea into physical reality.
+          Repertoire pieces of advanced complexity, learn choreography: what it takes to build an idea into physical reality.
 
           * **Pieces:** such as Ashtapadi, Varnam, Padam and Dashavataram
       - title: Level 7 - Post Margam / Arangetram
